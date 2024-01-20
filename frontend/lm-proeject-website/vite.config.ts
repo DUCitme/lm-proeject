@@ -7,7 +7,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import WindiCSS from 'vite-plugin-windicss';
 import Pages from 'vite-plugin-pages';
 import { RouteObject } from 'react-router';
-import PkgConfig from 'vite-plugin-package-config';
 
 const fs = require('fs');
 
@@ -20,7 +19,6 @@ export default defineConfig({
     plugins: [
         react(),
         WindiCSS(),
-        PkgConfig(),
         Pages({
             exclude: ['**/components/*.**'],
             onRoutesGenerated: (routes: RouteObject[]) => {
