@@ -1,0 +1,34 @@
+.ant-form-vertical {
+    .ant-form-item-label {
+        position: relative;
+        width: 100%;
+
+        & > label {
+            position: static;
+            flex-direction: row-reverse;
+            &::before {
+                margin-left: 4px;
+            }
+
+            .ant-form-item-tooltip {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}
+
+.ant-form-item-explain {
+    &.ant-form-item-explain-error {
+        font-size: 12px !important;
+        @apply text-red-500;
+    }
+}
+
+@media (max-width: 575px) {
+    .ant-form .ant-form-item .ant-form-item-label,
+    .ant-form .ant-form-item .ant-form-item-control {
+        max-width: 100%;
+        flex: none;
+    }
+}
