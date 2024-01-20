@@ -1,0 +1,1 @@
+type ISizeBarState = 'expan' | 'collapse';
