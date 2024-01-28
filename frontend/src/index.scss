@@ -83,3 +83,8 @@ a:visited {
         transform: rotate(360deg);
     }
 }
+
+.container {
+    @apply mx-auto px-4;
+    max-width: 1200px !important;
+}
