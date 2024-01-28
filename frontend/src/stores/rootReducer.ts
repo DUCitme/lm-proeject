@@ -5,6 +5,7 @@ import authReducer from './authSlice';
 import { AUTH_KEY, LAYOUT_KEY } from './keys';
 import layoutReducer from './layoutSlice';
 import menuReducer from './menuSlice';
+import categoryReducer from './categorySlice';
 
 const persistConfig: PersistConfig<ICombinedState> = {
     key: 'root',
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     layout: layoutReducer,
     menu: menuReducer,
     auth: authReducer,
+    categories: categoryReducer,
 });
 const reducers = persistReducer(persistConfig, rootReducer);
 export default reducers;

@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 
 import 'virtual:windi.css';
 import 'react-toastify/dist/ReactToastify.css';
+
 import { ChakraProvider } from '@chakra-ui/react';
 
 const App: React.FC = () => {
