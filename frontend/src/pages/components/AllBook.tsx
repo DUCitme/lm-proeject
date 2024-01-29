@@ -5,6 +5,7 @@ import { useAppSelector } from '@src/hooks/useAppDispatch';
 
 const AllBook = () => {
     const categories = useAppSelector((state) => state.categories);
+    const books = useAppSelector((state) => state.books);
 
     return (
         <Box marginTop="4">
@@ -16,22 +17,9 @@ const AllBook = () => {
                         </Text>
                     </Box>
                     <Flex padding="4" gap="4" justifyContent="space-between" flexWrap="wrap" alignItems="center">
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
-                        <BookItem book={{}} />
+                        {books.map((book, index) => (
+                            <BookItem key={index} book={book} />
+                        ))}
                     </Flex>
                 </Box>
             </Box>

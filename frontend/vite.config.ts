@@ -15,7 +15,6 @@ const dev = process.env.NODE_ENV === 'development';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    envDir: './env',
     plugins: [
         react(),
         WindiCSS(),

@@ -1,4 +1,5 @@
-import { Box, Stack, Image, Text } from '@chakra-ui/react';
+import { Stack, Image, Text } from '@chakra-ui/react';
+import NumberUtils from '@src/utils/NumberUtils';
 import { useNavigate } from 'react-router-dom';
 
 type BookItemProps = {
@@ -10,7 +11,7 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
 
     return (
         <Stack
-            onClick={() => navigate(`/book/${book.id}`)}
+            onClick={() => navigate(`/book/${book.bookid}`)}
             width="236px"
             backgroundColor="white"
             padding="4"
@@ -18,15 +19,12 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
             cursor="pointer"
             _hover={{ shadow: 'lg' }}
         >
-            <Image
-                borderRadius="4"
-                src="https://cdn0.fahasa.com/media/catalog/product/a/t/atlas-giai-phau-co-the-nguoi.jpg"
-            />
+            <Image height="256px" objectFit="cover" borderRadius="4" src={book.image} />
 
-            <Text>Atlas Giải Phẫu Cơ Thể Người</Text>
+            <Text>{book.title}</Text>
 
             <Text color="red" fontWeight="bold">
-                60.000đ
+                {NumberUtils.vndFormat(book.price)}
             </Text>
         </Stack>
     );

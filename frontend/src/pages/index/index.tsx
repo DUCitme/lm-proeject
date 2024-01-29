@@ -8,9 +8,15 @@ import HightLight from '../components/HightLight';
 import FlashSale from '../components/FlashSale';
 import Category from '../components/Category';
 import AllBook from '../components/AllBook';
+import useLoadBooks from '@src/hooks/useLoadBooks';
 
 const HomePage: FC = () => {
     const navigate = useNavigate();
+    const { loading } = useLoadBooks();
+
+    if (loading) {
+        return loading;
+    }
 
     return (
         <Stack gap="0" bg="#F0F0F0" minH="100vh">

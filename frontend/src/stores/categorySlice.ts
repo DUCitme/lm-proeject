@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ERole } from '@src/types/enum';
 import { CATEGORY_KEY } from './keys';
 
 export type ICategory = {

@@ -1,7 +1,10 @@
 import { Box, Flex, Image } from '@chakra-ui/react';
 import BookItem from '@core/components/BookItem';
+import { useAppSelector } from '@src/hooks/useAppDispatch';
 
 const FlashSale = () => {
+    const books = useAppSelector((state) => state.books);
+
     return (
         <Box backgroundColor="#ff6c6b" marginTop="4">
             <Box marginTop="4" className="container" padding="4">
@@ -10,11 +13,9 @@ const FlashSale = () => {
                 </Box>
             </Box>
             <Flex className="container" padding="4" gap="4" justifyContent="space-between">
-                <BookItem book={{}} />
-                <BookItem book={{}} />
-                <BookItem book={{}} />
-                <BookItem book={{}} />
-                <BookItem book={{}} />
+                {books.slice(0, 5).map((book, index) => (
+                    <BookItem key={index} book={book} />
+                ))}
             </Flex>
         </Box>
     );

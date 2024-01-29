@@ -45,4 +45,5 @@ const createInstance = (basUrl: string, store: IAppStore, requireAuth?: boolean)
     return instance;
 };
 
-export const FAKE_INSTANCE = createInstance('https://jsonplaceholder.typicode.com', store, true);
+// @ts-ignore
+export const API_INSTANCE = createInstance('http://localhost:8080/api', store, true);
