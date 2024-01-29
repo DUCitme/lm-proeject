@@ -31,4 +31,10 @@ class BookController(private val bookRepository: BookRepository) {
 
     return bookRepository.save(book)
   }
+
+  @DeleteMapping("/delete/{id}")
+  fun deleteBookById(@PathVariable id: Long): String {
+    bookRepository.deleteById(id)
+    return "Book deleted successfully"
+  }
 }

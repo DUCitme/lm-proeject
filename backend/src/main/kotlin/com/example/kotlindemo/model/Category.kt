@@ -12,6 +12,6 @@ import javax.persistence.Table
 class Category {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  var categoryid: Int? = null
+  var categoryid: Long? = null
   var categoryname: String? = null // getters and setters
 }
