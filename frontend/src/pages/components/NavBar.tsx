@@ -13,7 +13,7 @@ import {
     MenuList,
 } from '@chakra-ui/react';
 import { APP_CONFIG } from '@config/appConfig';
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { faBars, faSearch, faCartShopping, faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppSelector } from '@src/hooks/useAppDispatch';
