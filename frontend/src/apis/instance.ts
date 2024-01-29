@@ -45,5 +45,5 @@ const createInstance = (basUrl: string, store: IAppStore, requireAuth?: boolean)
     return instance;
 };
 
-// export const API_INSTANCE = createInstance('http://localhost:8080/api', store, true);
-export const API_INSTANCE = createInstance('https://71c4pnfp-8080.asse.devtunnels.ms/api', store, true);
+export const API_INSTANCE = createInstance('http://localhost:8080/api', store, true);
+// export const API_INSTANCE = createInstance('https://71c4pnfp-8080.asse.devtunnels.ms/api', store, true);

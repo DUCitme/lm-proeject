@@ -3,9 +3,11 @@ import BOOK_API from '@src/apis/book-api';
 import useLoadBooks from '@src/hooks/useLoadBooks';
 import NumberUtils from '@src/utils/NumberUtils';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const BookDetail = () => {
     const [book, setBook] = useState<any>(null);
+    const { id } = useParams();
 
     useLoadBooks();
 
@@ -15,7 +17,7 @@ const BookDetail = () => {
 
     const getBook = async () => {
         try {
-            const response = await BOOK_API.getBookById(1);
+            const response = await BOOK_API.getBookById(Number(id));
             setBook(response.data);
         } catch (error) {
             console.log(error);
