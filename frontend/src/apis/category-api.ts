@@ -2,17 +2,24 @@ import CategoryModel from '@core/models/category.model';
 import { API_INSTANCE } from './instance';
 
 class CategoryApi {
-    private BASE_URL = '/categories';
     getAllCategories() {
-        return API_INSTANCE.get<CategoryModel[]>(`${this.BASE_URL}/all`);
+        return API_INSTANCE.get<CategoryModel[]>(`/categories/all`);
     }
 
     getCategoryById(id: number) {
-        return API_INSTANCE.get<CategoryModel>(`${this.BASE_URL}/detail/${id}`);
+        return API_INSTANCE.get<CategoryModel>(`/categories/detail/${id}`);
     }
 
     addCategory(data: CategoryModel) {
-        return API_INSTANCE.post(`${this.BASE_URL}/add`, data);
+        return API_INSTANCE.post(`/categories/add`, data);
+    }
+
+    updateCategory(data: CategoryModel) {
+        return API_INSTANCE.put(`/categories/update/${data.categoryid}`, data);
+    }
+
+    deleteCategory(id: number) {
+        return API_INSTANCE.delete(`/categories/delete/${id}`);
     }
 }
 

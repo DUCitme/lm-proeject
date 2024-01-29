@@ -42,12 +42,13 @@ const CategoryList: FC = () => {
     });
 
     const onSubmit = async (data: CategoryModel) => {
+        const action = data.categoryid ? CATEGORY_API.updateCategory : CATEGORY_API.addCategory;
         try {
-            await CATEGORY_API.addCategory(data);
+            await action(data);
 
             toast({
                 title: 'Thành công',
-                description: 'Thêm danh mục thành công',
+                description: 'Thao tác thành công',
                 status: 'success',
                 duration: 9000,
                 isClosable: true,
@@ -55,9 +56,10 @@ const CategoryList: FC = () => {
             onClose();
             loadCategories();
         } catch (error) {
+            console.log(error);
             toast({
                 title: 'Thất bại',
-                description: 'Thêm danh mục thất bại',
+                description: 'Thao tác thất bại',
                 status: 'error',
                 duration: 9000,
                 isClosable: true,
@@ -71,6 +73,10 @@ const CategoryList: FC = () => {
                 data={categories}
                 columns={columns}
                 addActionButton={{ children: 'Thêm danh mục', onClick: onOpen }}
+                editAction={(category) => {
+                    form.reset(category);
+                    onOpen();
+                }}
             />
 
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="xl">
