@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import BOOK_API from '@src/apis/book-api';
 
 const useLoadBooks = () => {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const dispatch = useAppDispatch();
 
     const loadBooks = async () => {
         try {
             const res = await BOOK_API.getAllBooks();
             dispatch(bookAction.setState(res.data));
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -20,7 +21,7 @@ const useLoadBooks = () => {
         loadBooks();
     }, []);
 
-    return { loading };
+    return { loading, loadBooks };
 };
 
 export default useLoadBooks;

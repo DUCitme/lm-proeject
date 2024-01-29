@@ -1,10 +1,10 @@
 import { IsNotEmpty, IsUrl, IsNumber } from 'class-validator';
 
 class CategoryModel {
-    public categoryID: string;
+    public categoryid: string;
 
     @IsNotEmpty({ groups: ['edit', 'create'] })
-    public catagoryName: string;
+    public categoryname: string;
 
     constructor(props: Partial<CategoryModel>) {
         Object.assign(this, props);

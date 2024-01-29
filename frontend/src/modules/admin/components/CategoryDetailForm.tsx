@@ -11,10 +11,10 @@ const CategoryDetailForm: FC = () => {
 
     return (
         <Grid as="form" templateColumns="repeat(2, 1fr)" gap="4">
-            <FormControl as={GridItem} colSpan={2} isInvalid={!!errors.catagoryName}>
+            <FormControl as={GridItem} colSpan={2} isInvalid={!!errors.categoryname}>
                 <FormLabel>Tên danh mục</FormLabel>
-                <Input placeholder="Nhập tên sách" {...register('catagoryName')} />
-                <FormErrorMessage>{errors.catagoryName && errors.catagoryName.message}</FormErrorMessage>
+                <Input placeholder="Nhập tên sách" {...register('categoryname')} />
+                <FormErrorMessage>{errors.categoryname && errors.categoryname.message}</FormErrorMessage>
             </FormControl>
         </Grid>
     );

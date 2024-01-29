@@ -1,32 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BOOK_KEY } from './keys';
+import BookModel from '@core/models/book.model';
 
-export type IBook = {
-    bookid: number;
-    title: string;
-    author: string;
-    price: number;
-    description: string;
-    stockquantity: number;
-    isbn: string;
-    publishedDate: any;
-    image: string;
-    languageID: number;
-    publisherID: number;
-    weight: number;
-    page: number;
-    dimensions: string;
-    featured: boolean;
-    bestseller: boolean;
-};
-
-const initialState: IBook[] = [];
+const initialState: BookModel[] = [];
 
 export const bookSlice = createSlice({
     name: BOOK_KEY,
     initialState,
     reducers: {
-        setState: (state, action: PayloadAction<IBook[]>) => {
+        setState: (state, action: PayloadAction<BookModel[]>) => {
             state = action.payload;
             return state;
         },

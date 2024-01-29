@@ -1,40 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CATEGORY_KEY } from './keys';
+import CategoryModel from '@core/models/category.model';
 
-export type ICategory = {
-    id: string;
-    name: string;
-};
-
-const initialState: ICategory[] = [
-    {
-        id: '1',
-        name: 'Sách Ngoại Ngữ',
-    },
-    {
-        id: '2',
-        name: 'Sách Kĩ Năng Sống',
-    },
-    {
-        id: '3',
-        name: 'Tiểu Thuyết',
-    },
-    {
-        id: '4',
-        name: 'Sách Thiếu Nhi',
-    },
-    {
-        id: '5',
-        name: 'Sách Cho Teen',
-    },
-];
+const initialState: CategoryModel[] = [];
 
 export const categorySlice = createSlice({
     name: CATEGORY_KEY,
     initialState,
     reducers: {
-        setState: (state, action: PayloadAction<ICategory[]>) => {
-            return { ...state, ...action.payload };
+        setState: (state, action: PayloadAction<CategoryModel[]>) => {
+            state = action.payload;
+
+            return state;
         },
     },
 });

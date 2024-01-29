@@ -1,5 +1,5 @@
 import AppRouter from '@core/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -10,16 +10,10 @@ import 'virtual:windi.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import BOOK_API from './apis/book-api';
 
 const App: React.FC = () => {
     const persistor = persistStore(store);
 
-    useEffect(() => {
-        BOOK_API.getAllBooks().then((res) => {
-            console.log(res);
-        });
-    });
     return (
         <ChakraProvider>
             <Provider store={store}>

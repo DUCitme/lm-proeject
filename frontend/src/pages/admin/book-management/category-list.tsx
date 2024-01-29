@@ -11,6 +11,7 @@ import {
     DrawerHeader,
     DrawerOverlay,
     useDisclosure,
+    useToast,
 } from '@chakra-ui/react';
 
 import DataTable, { IDataTableColum } from '@core/components/DataTable';
@@ -19,36 +20,55 @@ import { classValidatorResolver } from '@hookform/resolvers/class-validator';
 import CategoryDetailForm from '@modules/admin/components/CategoryDetailForm';
 import authHOC from '@src/hoc/authHOC';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useAppSelector } from '@src/hooks/useAppDispatch';
+import useLoadCategory from '@src/hooks/useLoadCategory';
+import CATEGORY_API from '@src/apis/category-api';
 
 const resolver = classValidatorResolver(CategoryModel);
 
 const CategoryList: FC = () => {
     const columns: IDataTableColum<CategoryModel>[] = [
-        { key: 'categoryID', header: 'ID', type: 'text' },
-        { key: 'catagoryName', header: 'Tên danh mục', type: 'text' },
+        { key: 'categoryid', header: 'ID', type: 'text' },
+        { key: 'categoryname', header: 'Tên danh mục', type: 'text' },
     ];
 
+    const { loadCategories } = useLoadCategory();
+    const toast = useToast();
     const form = useForm<CategoryModel>({ resolver });
+    const categories = useAppSelector((state) => state.categories);
 
     const { isOpen, onOpen, onClose } = useDisclosure({
         onClose: () => form.reset(),
     });
 
-    const onSubmit = (data: CategoryModel) => {
-        console.log(data);
-    };
+    const onSubmit = async (data: CategoryModel) => {
+        try {
+            await CATEGORY_API.addCategory(data);
 
-    const mockBooks = Array(10)
-        .fill(null)
-        .map((_, index) => ({
-            categoryID: `category${index}`,
-            catagoryName: `Category Name ${index}`,
-        })) as CategoryModel[];
+            toast({
+                title: 'Thành công',
+                description: 'Thêm danh mục thành công',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+            });
+            onClose();
+            loadCategories();
+        } catch (error) {
+            toast({
+                title: 'Thất bại',
+                description: 'Thêm danh mục thất bại',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+            });
+        }
+    };
 
     return (
         <Box bgColor="white" borderRadius="lg" padding="4" border="1px" borderColor="gray.200" boxShadow="xs">
             <DataTable
-                data={mockBooks}
+                data={categories}
                 columns={columns}
                 addActionButton={{ children: 'Thêm danh mục', onClick: onOpen }}
             />

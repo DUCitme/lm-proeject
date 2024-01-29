@@ -5,6 +5,7 @@ import { useAppSelector } from '@src/hooks/useAppDispatch';
 
 const Category = () => {
     const categories = useAppSelector((state) => state.categories);
+    console.log(categories);
 
     return (
         <Box marginTop="4">
@@ -17,7 +18,7 @@ const Category = () => {
                     </Box>
                     <Flex padding="4" gap="4" justifyContent="space-between">
                         {categories.map((category) => (
-                            <CategoryItem key={category.id} category={category} />
+                            <CategoryItem key={category.categoryid} category={category} />
                         ))}
                     </Flex>
                 </Box>

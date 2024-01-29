@@ -1,6 +1,7 @@
 // vite-env.d.ts
 /// <reference types="vite-plugin-pages/client-react" />
 
+import useLoadCategory from '@src/hooks/useLoadCategory';
 import cloneDeep from 'lodash/cloneDeep';
 import { FC, Suspense } from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
@@ -40,6 +41,8 @@ const getRouterData = (routers: RouteObject[]): RouteObject[] => {
 };
 
 const AppRouter: FC = () => {
+    useLoadCategory();
+
     const _router = getRouterData(routes);
     return useRoutes(_router);
 };

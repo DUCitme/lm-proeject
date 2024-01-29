@@ -29,10 +29,10 @@ const BookDetailForm: FC = () => {
                 <FormErrorMessage>{errors.author && errors.author.message}</FormErrorMessage>
             </FormControl>
 
-            <FormControl as={GridItem} colSpan={1} isInvalid={!!errors.categoryID}>
+            <FormControl as={GridItem} colSpan={1} isInvalid={!!errors.categoryid}>
                 <FormLabel>Danh mục</FormLabel>
-                <Input placeholder="Danh mục" {...register('categoryID')} />
-                <FormErrorMessage>{errors.categoryID && errors.categoryID.message}</FormErrorMessage>
+                <Input placeholder="Danh mục" {...register('categoryid')} />
+                <FormErrorMessage>{errors.categoryid && errors.categoryid.message}</FormErrorMessage>
             </FormControl>
         </Grid>
     );
